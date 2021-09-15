@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Cinefilos</title>
+  </head>
+  <body>
+    <p>Agustin Salum</p>
+    <p>Ingrese informacion de peliculas</p>
+    
+    <form action="/guardar/" method="post">
+      {% csrf_token %}
+      {{form.as_p}}
+
+          <input type="submit" value=Guardar></button>
+  <!--FIN Formulario -->
+    </form>
+    <table class="Cuadro">
+      <tr>
+        <th> Nombre </th>
+        <th> Director </th>
+        <th> Elenco </th>
+        <th> Puntaje </th>
+        <th> Editar </th>
+        <th> Eliminar </th>
+      </tr>
+      <tr>
+        {% if peliculas  %}
+        {% for p in peliculas %}
+        <td> {{p.nombre}} </td>
+        <td> {{p.director}} </td>
+        <td> {{p.elenco}} </td>
+        <td> {{p.puntaje}} </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+        </p>No existen peliculas</p>
+      {% endif %}
+  </body>
+</html>
